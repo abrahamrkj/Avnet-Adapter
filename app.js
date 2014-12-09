@@ -1843,10 +1843,10 @@ app.post('/login', function(req, res){
         'userName':'ikart',
         'password':'ikart123'
     };
-  getUserDetails(req.body.username,function(param){
+  getUserDetails(req.body.userName,function(param){
    if(param!=null){
     console.log("deleting");
-   deleteUser(req.body.username);
+   deleteUser(req.body.userName);
    }
    
     console.log(req.body);
