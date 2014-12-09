@@ -24,7 +24,7 @@ $( document ).ready(function() {
     var url = 'data:text/json;charset=utf8,' + encodeURIComponent(jsonObj);
 	writeToFile(encodeURIComponent(jsonObj))
 	});
-    jQuery.get('http://146.148.50.190:8080/logs/adapCom.log', function(data) {
+    jQuery.get('http://209.166.166.16:8080/logs/adapCom.log', function(data) {
        $('#logDisplay').html(data.replace(/\n/g, "<br />"));
     });
 });
