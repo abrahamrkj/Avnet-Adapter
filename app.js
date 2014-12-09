@@ -18,7 +18,8 @@ var cat = "/wcsstore/Aurora/";
 var cookieSession = require('cookie-session');
 var WCTrustedTocken = "";
 var WCToken = "";
-
+var express = require('express')
+var bodyParser = require('body-parser');
 nconf.argv()
        .env()
        .file({ file: './static/config.json' });
@@ -1837,19 +1838,18 @@ var adapterObject = adapterFactory.doIBMWebCommerce();
 /* Mapping for Login request */
 
 var userIp = "x.x.x.x";
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json())
 
 app.post('/login', function(req, res){
-    var x={
-        'userName':'ikart',
-        'password':'ikart123'
-    };
+     console.log("body"+req.body.userName);
+
   getUserDetails(req.body.userName,function(param){
    if(param!=null){
     console.log("deleting");
    deleteUser(req.body.userName);
    }
    
-    console.log(req.body);
     adapterObject.login(req.body, request, querystring, function(params)
     {
         if (JSON.parse(params).errors)
@@ -2508,4 +2508,47 @@ function deleteUser(){
     db.users.remove({'flag':'0'},function(err,result){if(err){
     console.log("error in deleting from db");
     }});
+}
+function getUserDetails(userid, callback)
+{
+    console.log("getting user Details.."+userid);
+    db.users.find(
+    {
+        userId: userid,
+        flag: "1"
+    }, function(err, users)
+    {   var count=0;
+        console.log("gotcha.."+users);
+        if (err || !users) {
+            console.log("No users found")
+          //  callback(null);
+        }
+        else users.forEach(function(user)
+        {   count=count+1;
+            console.log("user Found"+user);
+            var details = {
+                'WCToken': user.key2,
+                'WCTrustedToken': user.key1
+            };
+            callback(details);
+        });
+            if(count==0){
+    callback(null);
+    }
+    });
+    
+}
+
+function updateSession(wctrustedtoken, userid)
+{
+    db.users.update(
+    {
+        userId: userid
+    },
+    {
+        $set:
+        {
+            key1: wctrustedtoken
+        }
+    });
 }

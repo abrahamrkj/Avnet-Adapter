@@ -15385,3 +15385,11 @@
 [2014-12-09 11:18:48.809] [DEBUG] adapCom - admin method initiated [x.x.x.x]
 [2014-12-09 11:21:07.966] [DEBUG] adapCom - Server Initiated 
 [2014-12-09 11:21:07.969] [DEBUG] adapCom - HTTP Server Initiated on port: 3000[x.x.x.x]
+[2014-12-09 16:58:49.369] [DEBUG] adapCom - Server Initiated 
+[2014-12-09 16:58:49.372] [DEBUG] adapCom - HTTP Server Initiated on port: 3000[x.x.x.x]
+[2014-12-09 17:03:49.740] [DEBUG] adapCom - Server Initiated 
+[2014-12-09 17:03:49.742] [DEBUG] adapCom - HTTP Server Initiated on port: 3000[x.x.x.x]
+[2014-12-09 17:06:09.851] [DEBUG] adapCom - Server Initiated 
+[2014-12-09 17:06:09.854] [DEBUG] adapCom - HTTP Server Initiated on port: 3000[x.x.x.x]
+[2014-12-09 17:06:47.539] [DEBUG] adapCom - Server Initiated 
+[2014-12-09 17:06:47.542] [DEBUG] adapCom - HTTP Server Initiated on port: 3000[x.x.x.x]
